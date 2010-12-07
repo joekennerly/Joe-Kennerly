@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+	<title>{Title}</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="{Favicon}" />
+	
+  <style type="text/css">
+  
+  /* = Default = */
+  
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    body {
+    	background: white;
+      font: 14px helvetica;
+    }
+    
+    li {
+    	list-style: none;
+    }
+    
+    a {
+    	text-decoration: none;
+    	color: black;
+    }
+    
+    a:focus {
+	  	outline: none;
+	    -moz-outline-style: none;
+	  }
+    
+    #container {
+    	width: 800px;
+      margin: 20px auto;
+    }
+    
+  /* = Header = */
+  
+  	header {
+  		text-align: center;
+  	}  	
+  
+  	header h1 {
+  		font-size: 120px;
+  	}
+  	
+  	header p {
+  		color: gray;
+  		font-size: xx-large;
+  		margin-bottom: 30px;
+  	}
+  	
+ 	/* = Nav = */
+    
+    nav li {
+    	float: left;
+    	-webkit-border-radius: 200px;
+    	-moz-border-radius: 200px;
+    	border-radius: 200px;
+    }
+    
+    nav li a {
+    	display: block;
+    	height: 200px;
+    	width: 200px;
+    }
+    
+    nav li a p {
+    	font-size: x-large;
+    	color: white;
+    	position: relative;
+    	top: 80px;
+    }
+    
+    #about {
+    	background: red;
+    }
+    
+    #blog {
+    	background: yellow;
+    }
+    
+    #work {
+    	background: green;
+    }
+    
+    #contact {
+    	background: blue;
+    }
+    
+  /* = Misc. = */
+    
+    #tumblr_controls {
+    	display: none;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <div id="container">
+  
+	  <header>
+	  	<h1>Joe Kennerly</h1>
+	  	<p id="description">web / audio / visual content design and development</p>
+	  	<nav>
+	    	<li id="about">
+	    		<a href="/about"><p>About</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="blog">
+	    		<a href="http://joekennerly.tumblr.com"><p>Blog</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="work">
+	    		<a href="/work"><p>Work</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="contact">
+	    		<a href="/contact"><p>Contact</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    </nav>
+	  </header>
+	      
+  </div>
+
+</body>
+</html>
