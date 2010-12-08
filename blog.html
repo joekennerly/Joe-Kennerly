@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<head>
+  <title>{Title}</title>
+  <link rel="shortcut icon" href="{Favicon}">
+  {block:Description}
+  	<meta name="description" content="{MetaDescription}" />
+  {/block:Description}
+  <style type="text/css">
+  
+  /* = Default = */
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+    	background: white;
+      font: 14px helvetica;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 10px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    
+    html {
+    	overflow-y: auto;
+    	background-color: transparent;
+    }
+    
+    img {
+    	margin: auto;
+    }
+    
+    ::-webkit-scrollbar {
+    	width: 10px;
+    	height: 10px;
+    }
+    
+    ::-webkit-scrollbar-button:start:decrement,
+    ::-webkit-scrollbar-button:end:increment {
+    	height: 30px;
+    	display: block;
+    	background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-track-piece {
+    	background-color: #E3FBF5;
+    	-webkit-border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:vertical {
+    	height: 50px;
+    	background-color: #99f0da;
+    	-webkit-border-radius: 6px;
+    }
+
+    li {
+    	list-style: none;
+    }
+
+    a {
+    	text-decoration: none;
+    	color: black;
+    }
+    
+    a:focus {
+    	outline: none;
+    	-moz-outline-style: none;
+    }
+
+    #container {
+    	position: relative;
+    	width: 800px;
+      margin: 20px auto;
+    }
+
+  /* = Header = */
+
+  	header {
+  		text-align: center;
+  	}  	
+
+  	header h1 {
+  		margin-left: 20px;
+  		font-size: 120px;
+  	}
+
+  	#description {
+  		color: gray;
+  		font-size: xx-large;
+  		margin-bottom: 30px;
+  	}
+
+  	/* = Nav = */
+
+    nav li {
+    	position: absolute;
+    	-webkit-border-radius: 200px;
+    	-moz-border-radius: 200px;
+    	border-radius: 200px;
+    }
+
+    nav li a {
+    	display: block;
+    	height: 200px;
+    	width: 200px;
+    }
+
+    header nav li a p {
+    	font-size: x-large;
+    	color: white;
+    	top: 80px;
+    	position: relative;
+    }
+    
+    .inside {
+    	overflow: hidden;
+    	text-align: left;
+    	display: none;
+    	padding: 20px;
+    	margin-top: -50px;
+    }
+    
+    nav .inside li {
+    	position: relative;
+    }
+    
+    nav .inside a {
+    	display: inline;
+    }
+    
+    #blog .inside {
+    	padding: 0px;
+    }
+
+    #about {
+    	background: red;
+    	left: 0px;
+    }
+    
+    .about {
+    	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(red), to(white));
+    	background: -moz-linear-gradient(100% 100% 90deg, red , white );
+    }
+
+    #blog {
+    	background: yellow;
+    	left: 200px;
+    }
+    
+    .blog {
+    	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(yellow), to(white));
+    	background: -moz-linear-gradient(100% 100% 90deg, yellow , white );
+    }
+
+    #work {
+    	background: green;
+    	left: 400px;
+    }
+    
+    .work {
+    	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(green), to(white));
+    	background: -moz-linear-gradient(100% 100% 90deg, green , white );
+    }
+
+    #contact {
+    	background: blue;
+    	left: 600px;
+    }
+    
+    .contact {
+    	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(blue), to(white));
+    	background: -moz-linear-gradient(100% 100% 90deg, blue , white );
+    }
+
+  /* = Main = */
+
+  	#main {
+  		position: relative;
+  		top: 230px;
+  	}
+
+  	#content {
+  		float: left;
+  	}
+
+  	.blog {
+  		margin: 20px;
+  		width: 520px;
+  	}
+
+  	.post {
+  		background: #e3fbf5;
+  		padding: 10px;
+  		overflow: hidden;
+  	}
+
+  	#body {
+  		margin: 10px 0px;
+  	}
+
+  	#date {
+  		color: #777;
+  		float: left;
+  	}
+
+  	#tags {
+  		color: #777;
+  		float: right;
+  	}
+
+  	#tags li {
+  		display: inline;
+  	}
+
+  	#footer {
+  		float: left;
+  		margin: 20px;
+  	}
+
+        #image {
+                margin: auto;
+        }
+
+  /* = Sidebar = */
+
+  	#sidebar {
+  		float: right;
+  	}
+
+  	.side {
+  		width: 199px;
+  		border-left: 1px dashed #bbb;
+  		padding: 0px 20px;
+  		margin: 20px 0px;
+  	}
+
+  	#sidelist li {
+  		display: block;
+  	}
+  	
+  
+  </style>
+</head>
+<body>
+
+  <div id="container">
+  
+	  <header>
+	  	<h1><a href="/">{Title}</a></h1>
+	  	<p id="description">{Description}</p>
+	  	<nav>
+	    	<li id="about">
+	    		<a href="/about" class="nav"><p>About</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="blog">
+	    		<a href="http://joekennerly.tumblr.com" class="nav"><p>Blog</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="work">
+	    		<a href="/work" class="nav"><p>Work</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    	<li id="contact">
+	    		<a href="/contact" class="nav"><p>Contact</p></a>
+	    		<div class="inside"></div>
+	    	</li>
+	    </nav>
+	  </header>
+	  
+	  <section id="main">
+		  <div id="sidebar">
+				<div id="twitter" class="side">
+					<div class="post">
+						<h3>Links</h3>
+						<ul id="sidelist">
+							<li><a href="http://twitter.com/sirjoseph">Twitter</a></li>
+							<li><a href="http://www.linkedin.com/in/joekennerly">LinkdIn</a></li>
+							<li><a href="https://github.com/sirjoseph">GitHub</a></li>
+							<li><a href="http://www.youtube.com/user/SirJosephKennerly">YouTube</a></li>
+							<li><a href="http://vimeo.com/joekennerly">Vimeo</a></li>
+							<li><a href="mailto:joseph.kennerly@gmail.com">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="tagnav" class="side">
+					<div class="post">
+						<h3>Tags</h3>
+						<ul id="sidelist">
+							<p>I gots to get working on this tag navigation thing...</p>
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+		{block:Posts}
+			<ul id="content">
+			
+			{block:Text}
+				<div class="blog" id="text">
+					<div class="post">
+						<h2><a href="{Permalink}">{Title}</a></h2>
+						<p id="body">
+							{Body}
+						</p>
+						<div id="date"><p>{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p></div>
+						{block:HasTags}
+							<ul id="tags"><strong>Tags:</strong>
+								{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+							</ul>
+						{block:HasTags}
+					</div>
+				</div>
+			{/block:Text}
+			
+				
+			{block:Photo}
+				<div class="blog" id="photo">
+					<div class="post">
+						<div id="image">
+							<img src="{PhotoURL-500}" />
+						</div>
+						{block:Caption}
+							<p id="body">{Caption}</p>
+						{/block:Caption}
+						<div id="date"><p>{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p></div>
+						{block:HasTags}
+							<ul id="tags"><strong>Tags:</strong>
+								{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+							</ul>
+						{block:HasTags}
+					</div>
+				</div>
+			{/block:Photo}
+				
+				
+			{block:Audio}
+				<div class="blog" id="audio">
+					<div class="post">
+						<div id="player">{AudioPlayer}</div>
+						{block:Caption}
+							<p id="body">{Caption}</p>
+						{/block:Caption}
+						<div id="date"><p>{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p></div>
+						{block:HasTags}
+							<ul id="tags"><strong>Tags:</strong>
+								{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+							</ul>
+						{block:HasTags}
+					</div>
+				</div>
+			{/block:Audio}
+				
+				
+			{block:Video}
+				<div class="blog" id="video">
+					<div class="post">
+						<div id="image">{Video-500}</div>
+						{block:Caption}
+							<p id="body">{Caption}</p>
+						{/block:Caption}
+						<div id="date"><p>{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</p></div>
+						{block:HasTags}
+							<ul id="tags"><strong>Tags:</strong>
+								{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+							</ul>
+						{block:HasTags}
+					</div>
+				</div>
+			{/block:Video}
+				    	
+			</ul>
+		{/block:Posts}
+		
+			<div id="footer"><p>Created by Joe Kennerly - Powered by <a href="http://tumblr.com">Tumblr</a></p></div>
+	
+	  </section>
+    
+  </div>
+ 
+</body>
+</html>
