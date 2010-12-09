@@ -17,26 +17,26 @@
     }
     
     body {
-    	background: white;
+      background: white;
       font: 14px helvetica;
     }
     
     li {
-    	list-style: none;
+      list-style: none;
     }
     
     a {
-    	text-decoration: none;
-    	color: black;
+      text-decoration: none;
+      color: black;
     }
     
     a:focus {
-	  	outline: none;
-	    -moz-outline-style: none;
-	  }
+      outline: none;
+      -moz-outline-style: none;
+    }
     
     #container {
-    	width: 800px;
+      width: 800px;
       margin: 20px auto;
     }
     
@@ -128,6 +128,12 @@
 	    	</li>
 	    </nav>
 	  </header>
+
+		<section id="main">
+			{block:Posts}
+				<ul id="content"></ul>
+			{/block:Posts}
+		</section>
 	      
   </div>
 
