@@ -10,95 +10,226 @@
   <style type="text/css">
   
   /* = Default = */
-  
+
     * {
       margin: 0px;
       padding: 0px;
     }
-    
+
     body {
-      background: white;
+    	background: white;
       font: 14px helvetica;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 10px;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
     
+    html {
+    	overflow-y: auto;
+    	background-color: transparent;
+    }
+    
+    img {
+    	margin: auto;
+    }
+    
+    ::-webkit-scrollbar {
+    	width: 10px;
+    	height: 10px;
+    }
+    
+    ::-webkit-scrollbar-button:start:decrement,
+    ::-webkit-scrollbar-button:end:increment {
+    	height: 30px;
+    	display: block;
+    	background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-track-piece {
+    	background-color: #E3FBF5;
+    	-webkit-border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:vertical {
+    	height: 50px;
+    	background-color: #99f0da;
+    	-webkit-border-radius: 6px;
+    }
+
     li {
-      list-style: none;
+    	list-style: none;
     }
-    
+
     a {
-      text-decoration: none;
-      color: black;
+    	text-decoration: none;
+    	color: black;
     }
     
     a:focus {
-      outline: none;
-      -moz-outline-style: none;
+    	outline: none;
+    	-moz-outline-style: none;
     }
-    
+
     #container {
-      width: 800px;
+    	position: relative;
+    	width: 800px;
       margin: 20px auto;
     }
-    
+
   /* = Header = */
-  
+
   	header {
   		text-align: center;
   	}  	
-  
+
   	header h1 {
+  		margin-left: 20px;
   		font-size: 120px;
   	}
-  	
-  	header p {
+
+  	#description {
   		color: gray;
   		font-size: xx-large;
   		margin-bottom: 30px;
   	}
-  	
- 	/* = Nav = */
-    
+
+  	/* = Nav = */
+
     nav li {
-    	float: left;
+    	position: absolute;
     	-webkit-border-radius: 200px;
     	-moz-border-radius: 200px;
     	border-radius: 200px;
     }
-    
+
     nav li a {
     	display: block;
     	height: 200px;
     	width: 200px;
     }
-    
-    nav li a p {
+
+    header nav li a p {
     	font-size: x-large;
     	color: white;
-    	position: relative;
     	top: 80px;
+    	position: relative;
     }
     
+    .inside {
+    	overflow: hidden;
+    	text-align: left;
+    	display: none;
+    	padding: 20px;
+    	margin-top: -50px;
+    }
+    
+    nav .inside li {
+    	position: relative;
+    }
+    
+    nav .inside a {
+    	display: inline;
+    }
+    
+    #blog .inside {
+    	padding: 0px;
+    }
+
     #about {
     	background: red;
+    	left: 0px;
     }
-    
+
     #blog {
     	background: yellow;
+    	left: 200px;
     }
-    
+
     #work {
     	background: green;
+    	left: 400px;
     }
-    
+
     #contact {
     	background: blue;
+    	left: 600px;
     }
-    
-  /* = Misc. = */
-    
-    #tumblr_controls {
-    	display: none;
-    }
+
+  /* = Main = */
+
+  	#main {
+  		position: relative;
+  		top: 230px;
+  	}
+
+  	#content {
+  		float: left;
+  	}
+
+  	.blog {
+  		margin: 20px;
+  		width: 520px;
+  	}
+
+  	.post {
+  		background: #e3fbf5;
+  		padding: 10px;
+  		overflow: hidden;
+  	}
+
+  	#body {
+  		margin: 10px 0px;
+  	}
+
+  	#date {
+  		color: #777;
+  		float: left;
+  	}
+
+  	#tags {
+  		color: #777;
+  		float: right;
+  	}
+
+  	#tags li {
+  		display: inline;
+  	}
+
+  	#footer {
+  		float: left;
+  		margin: 20px;
+  	}
+
+        #image {
+                margin: auto;
+        }
+
+  /* = Sidebar = */
+
+  	#sidebar {
+  		float: right;
+  	}
+
+  	.side {
+  		width: 199px;
+  		border-left: 1px dashed #bbb;
+  		padding: 0px 20px;
+  		margin: 20px 0px;
+  	}
+
+  	#sidelist li {
+  		display: block;
+  	}
+  	
+  /* = Tumblr Exclusive = */
+  
+  	#tumblr_controls{
+  		display: none;
+  	}
   
   </style>
 </head>
@@ -107,7 +238,7 @@
   <div id="container">
   
 	  <header>
-	  	<h1>Joe Kennerly</h1>
+	  	<h1><a href="/">Joe Kennerly</a></h1>
 	  	<p id="description">web / audio / visual content design and development</p>
 	  	<nav>
 	    	<li id="about">
@@ -115,7 +246,7 @@
 	    		<div class="inside"></div>
 	    	</li>
 	    	<li id="blog">
-	    		<a href="http://joekennerly.tumblr.com"><p>Blog</p></a>
+	    		<a href="/blog"><p>Blog</p></a>
 	    		<div class="inside"></div>
 	    	</li>
 	    	<li id="work">
@@ -130,8 +261,19 @@
 	  </header>
 
 		<section id="main">
+		
 			{block:Posts}
-				<ul id="content"></ul>
+				<ul id="content">
+					{block:Text}
+				<div class="blog" id="text">
+					<div class="post">
+						<p id="body">
+							{Body}
+						</p>
+					</div>
+				</div>
+			{/block:Text}
+				</ul>
 			{/block:Posts}
 		</section>
 	      
